@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan CAT Matematika SD - Pecahan & Desimal</title>
+  <style>
+    /* ==========================================================================
+       GAYA TAMPILAN (CSS) - RAMAH ANAK SD, BERSIH, CERIA, & RESPONSIF
+       ========================================================================== */
+    :root {
+      --primary: #4361ee;
+      --primary-hover: #3751d6;
+      --secondary: #4cc9f0;
+      --accent: #ff9f1c;
+      --success: #10b981;
+      --danger: #ef4444;
+      --bg-page: #f4f7fe;
+      --bg-card: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --radius-lg: 22px;
+      --radius-md: 14px;
+      --radius-sm: 8px;
+      --shadow-card: 0 10px 25px -5px rgba(67, 97, 238, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-page);
+      background-image: radial-gradient(#dce4f9 1.5px, transparent 1.5px);
+      background-size: 24px 24px;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 16px 40px;
+    }
+
+    .app-container {
+      width: 100%;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    /* Kartu Utama */
+    .card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      margin-bottom: 24px;
+    }
+
+    /* Header Aplikasi */
+    .header-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #eef2ff;
+      color: var(--primary);
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    h1.app-title {
+      font-size: 2rem;
+      color: #0f172a;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    p.app-subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 24px;
+    }
+
+    /* Penulisan Pecahan Bertingkat */
+    .frac {
+      display: inline-flex;
+      flex-direction: column;
+      vertical-align: middle;
+      text-align: center;
+      font-size: 0.92em;
+      line-height: 1.05;
+      margin: 0 4px;
+      font-weight: 700;
+    }
+    .frac-top {
+      border-bottom: 2px solid currentColor;
+      padding: 0 3px 1px;
+    }
+    .frac-bottom {
+      padding: 1px 3px 0;
+    }
+
+    /* Formulir Halaman Awal */
+    .info-box {
+      background: #f8fafc;
+      border-left: 5px solid var(--primary);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      margin-bottom: 24px;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .info-box ul {
+      margin-left: 20px;
+      margin-top: 8px;
+    }
+    .info-box li {
+      margin-bottom: 6px;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #334155;
+    }
+    .input-text {
+      width: 100%;
+      padding: 14px 18px;
+      font-size: 1.1rem;
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius-md);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .input-text:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(67, 97, 238, 0.15);
+    }
+    .input-error-msg {
+      color: var(--danger);
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-top: 6px;
+      display: none;
+    }
+
+    /* Tombol Utama */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 28px;
+      font-size: 1.15rem;
+      font-weight: 700;
+      border-radius: var(--radius-md);
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(67, 97, 238, 0.35);
+    }
+    .btn-primary:hover:not(:disabled) {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(67, 97, 238, 0.45);
+    }
+    .btn-primary:disabled {
+      background: #cbd5e1;
+      color: #64748b;
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+    }
+    .btn-secondary {
+      background: #e2e8f0;
+      color: #334155;
+    }
+    .btn-secondary:hover {
+      background: #cbd5e1;
+    }
+    .btn-full {
+      width: 100%;
+    }
+
+    /* Progres & Header Halaman Soal */
+    .quiz-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .quiz-number {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+    .badges-wrapper {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .badge {
+      display: inline-block;
+      padding: 5px 12px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+    .badge-level {
+      background: #fef3c7;
+      color: #b45309;
+    }
+    .badge-topic {
+      background: #e0f2fe;
+      color: #0369a1;
+    }
+
+    /* Progress Bar */
+    .progress-track {
+      width: 100%;
+      height: 12px;
+      background: #e2e8f0;
+      border-radius: 50px;
+      overflow: hidden;
+      margin-bottom: 26px;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 100%);
+      border-radius: 50px;
+      width: 0%;
+      transition: width 0.35s ease;
+    }
+
+    /* Konten Soal */
+    .question-box {
+      margin-bottom: 28px;
+    }
+    .question-text {
+      font-size: 1.35rem; /* Min 18px, di sini ~21.6px agar sangat jelas dibaca anak SD */
+      font-weight: 700;
+      line-height: 1.6;
+      color: #0f172a;
+    }
+
+    /* 4 Tombol Pilihan Opsi */
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .option-btn {
+      display: flex;
+      align-items: center;
+      background: #ffffff;
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      cursor: pointer;
+      text-align: left;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #334155;
+      transition: all 0.2s ease;
+    }
+    .option-btn:hover {
+      border-color: #93c5fd;
+      background: #f8fafc;
+    }
+    .option-btn.selected {
+      border-color: var(--primary);
+      background: #eff6ff;
+      color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.15);
+    }
+    .option-letter {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      border-radius: 50%;
+      background: #f1f5f9;
+      color: #475569;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.05rem;
+      margin-right: 16px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .option-btn.selected .option-letter {
+      background: var(--primary);
+      color: #ffffff;
+    }
+    .option-content {
+      flex: 1;
+      font-size: 1.15rem;
+      line-height: 1.4;
+    }
+
+    /* Halaman Hasil */
+    .result-header-card {
+      text-align: center;
+      padding: 24px 20px;
+      background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+      border-radius: var(--radius-md);
+      margin-bottom: 24px;
+    }
+    .result-greeting {
+      font-size: 1.25rem;
+      color: #4338ca;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .result-score-large {
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: var(--primary);
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+    .result-category-badge {
+      display: inline-block;
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin-top: 6px;
+    }
+    .category-sangat-baik { background: #d1fae5; color: #065f46; }
+    .category-baik { background: #dbeafe; color: #1e40af; }
+    .category-cukup { background: #fef3c7; color: #92400e; }
+    .category-perlu-bimbingan { background: #fee2e2; color: #991b1b; }
+
+    /* Ringkasan Metrik */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .metric-card {
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      text-align: center;
+    }
+    .metric-card .metric-label {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .metric-card .metric-val {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    /* Jalur Lintasan Tingkat Kesulitan */
+    .path-section {
+      background: #f8fafc;
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      margin-bottom: 24px;
+      border: 1px solid var(--border-color);
+    }
+    .path-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: #1e293b;
+    }
+    .path-display {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .path-node {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 46px;
+      height: 42px;
+      padding: 0 10px;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 1rem;
+      background: #e0e7ff;
+      color: var(--primary);
+      border: 2px solid #c7d2fe;
+    }
+    .path-arrow {
+      color: #94a3b8;
+      font-weight: 900;
+      font-size: 1.2rem;
+    }
+
+    /* Ringkasan Topik & Rekomendasi Belajar */
+    .topics-section {
+      margin-bottom: 28px;
+    }
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .topics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .topic-card {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+    .topic-card h4 {
+      font-size: 1.05rem;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    .topic-stat {
+      font-size: 0.95rem;
+      color: #475569;
+      margin-bottom: 4px;
+    }
+    .study-advice-box {
+      background: #fffbeb;
+      border: 1px solid #fef3c7;
+      border-left: 5px solid var(--accent);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: #92400e;
+    }
+
+    /* Daftar Soal & Pembahasan */
+    .review-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-bottom: 30px;
+    }
+    .review-item {
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 20px;
+    }
+    .review-item.is-correct {
+      border-left: 6px solid var(--success);
+    }
+    .review-item.is-wrong {
+      border-left: 6px solid var(--danger);
+    }
+    .review-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .review-status-badge {
+      font-size: 0.85rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 50px;
+    }
+    .status-correct { background: #d1fae5; color: #065f46; }
+    .status-wrong { background: #fee2e2; color: #991b1b; }
+    .review-question-text {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #1e293b;
+    }
+    .review-answers-box {
+      font-size: 1rem;
+      background: #ffffff;
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      border: 1px solid #e2e8f0;
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+    .review-explanation {
+      font-size: 0.95rem;
+      background: #eff6ff;
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      color: #1e3a8a;
+      line-height: 1.5;
+    }
+
+    /* Tombol Aksi Bawah */
+    .action-buttons-group {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .action-buttons-group .btn {
+      flex: 1;
+      min-width: 180px;
+    }
+
+    /* Disclaimer */
+    .disclaimer-text {
+      display: block;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 14px;
+      font-style: italic;
+    }
+
+    /* Media Cetak (Print View) */
+    @media print {
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+      }
+      .card {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+      }
+      .action-buttons-group,
+      .btn,
+      .header-tag,
+      #screenStart,
+      #screenQuiz {
+        display: none !important;
+      }
+      .review-item {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        margin-bottom: 16px;
+      }
+    }
+
+    /* Responsif untuk Smartphone */
+    @media (max-width: 600px) {
+      body {
+        padding: 14px 10px 30px;
+      }
+      .card {
+        padding: 22px 18px;
+      }
+      h1.app-title {
+        font-size: 1.6rem;
+      }
+      .question-text {
+        font-size: 1.2rem;
+      }
+      .option-btn {
+        padding: 14px 16px;
+      }
+      .result-score-large {
+        font-size: 2.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- ====================================================================
+         LAYAR 1: HALAMAN AWAL (IDENTITAS & PETUNJUK)
+         ==================================================================== -->
+    <section id="screenStart" class="card">
+      <div class="header-tag">🎯 Computerized Adaptive Testing</div>
+      <h1 class="app-title">Latihan CAT Matematika SD</h1>
+      <p class="app-subtitle">Materi: Pecahan & Desimal (Soal Menyesuaikan Kemampuanmu)</p>
+
+      <div class="info-box">
+        <strong>Halo Sahabat Pintar! 👋</strong>
+        <p style="margin-top: 6px;">Mari berlatih matematika dengan cara yang seru dan menantang:</p>
+        <ul>
+          <li>Tes terdiri dari <strong>6 soal pilihan ganda</strong>.</li>
+          <li><strong>Tingkat kesulitan soal berikutnya akan menyesuaikan jawabanmu secara otomatis:</strong> jika benar soal akan meningkat lebih menantang, dan jika keliru soal akan disesuaikan agar kamu lebih nyaman.</li>
+          <li>Pilihlah salah satu jawaban (A, B, C, atau D) yang paling tepat.</li>
+          <li>Kerjakan dengan tenang, teliti, dan penuh semangat!</li>
+        </ul>
+      </div>
+
+      <div class="form-group">
+        <label for="inputNamaSiswa">Masukkan Nama Lengkap / Panggilan Siswa:</label>
+        <input type="text" id="inputNamaSiswa" class="input-text" placeholder="Contoh: Budi Pratama" autocomplete="off" />
+        <div id="namaErrorMsg" class="input-error-msg">⚠️ Silakan isi nama kamu terlebih dahulu sebelum memulai latihan ya!</div>
+      </div>
+
+      <button id="btnMulaiTes" class="btn btn-primary btn-full">Mulai Latihan Sekarang 🚀</button>
+    </section>
+
+    <!-- ====================================================================
+         LAYAR 2: HALAMAN SOAL (ADAPTIF SATU SOAL PER LAYAR)
+         ==================================================================== -->
+    <section id="screenQuiz" class="card" style="display: none;">
+      <!-- Bar Informasi Atas -->
+      <div class="quiz-top-bar">
+        <div id="quizNumberLabel" class="quiz-number">Soal 1 dari 6</div>
+        <div class="badges-wrapper">
+          <span id="quizLevelBadge" class="badge badge-level">Level 3: Sedang</span>
+          <span id="quizTopicBadge" class="badge badge-topic">Topik: Pecahan</span>
+        </div>
+      </div>
+
+      <!-- Indikator Progres -->
+      <div class="progress-track">
+        <div id="progressBarFill" class="progress-fill"></div>
+      </div>
+
+      <!-- Teks Pertanyaan Soal -->
+      <div class="question-box">
+        <div id="questionText" class="question-text">Memuat butir soal...</div>
+      </div>
+
+      <!-- 4 Pilihan Opsi Jawaban (A, B, C, D) -->
+      <div id="optionsContainer" class="options-grid">
+        <!-- Opsi di-render secara dinamis lewat JavaScript -->
+      </div>
+
+      <!-- Tombol Aksi Jawab -->
+      <button id="btnJawabSoal" class="btn btn-primary btn-full" disabled>Jawab & Lanjut ➔</button>
+    </section>
+
+    <!-- ====================================================================
+         LAYAR 3: HALAMAN HASIL & EVALUASI LENGKAP
+         ==================================================================== -->
+    <section id="screenResult" class="card" style="display: none;">
+      <div class="header-tag">📊 Laporan Evaluasi Adaptif</div>
+      
+      <!-- Kartu Skor & Kategori -->
+      <div class="result-header-card">
+        <div id="resultGreeting" class="result-greeting">Hebat, Nama Siswa! 🌟</div>
+        <div id="resultScore" class="result-score-large">83</div>
+        <div>Skor Akhir Latihan</div>
+        <div>
+          <span id="resultCategoryBadge" class="result-category-badge category-sangat-baik">Sangat Baik</span>
+        </div>
+      </div>
+
+      <!-- Metrik Statistik Hasil -->
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-label">Jumlah Soal Dikerjakan</div>
+          <div id="metricTotalSoal" class="metric-val">6 Soal</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Jawaban Benar</div>
+          <div id="metricBenar" class="metric-val" style="color: var(--success);">5 Soal</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Jawaban Salah</div>
+          <div id="metricSalah" class="metric-val" style="color: var(--danger);">1 Soal</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Level Tertinggi Benar</div>
+          <div id="metricHighestLevel" class="metric-val" style="color: var(--primary);">Level 4</div>
+        </div>
+      </div>
+
+      <!-- Jalur Tingkat Kesulitan CAT -->
+      <div class="path-section">
+        <div class="path-title">🛤️ Jalur Adaptasi Tingkat Kesulitan Soal:</div>
+        <div id="pathDisplay" class="path-display">
+          <!-- Alur level (contoh: 3 -> 4 -> 3 -> ...) -->
+        </div>
+      </div>
+
+      <!-- Analisis Per Topik & Saran -->
+      <div class="topics-section">
+        <div class="section-title">📚 Ringkasan Penguasaan Materi:</div>
+        <div id="topicsGrid" class="topics-grid">
+          <!-- Kartu ringkasan topik -->
+        </div>
+        <div id="studyAdviceBox" class="study-advice-box">
+          <!-- Saran belajar berdasarkan topik yang salah -->
+        </div>
+      </div>
+
+      <!-- Daftar Pembahasan Soal -->
+      <div>
+        <div class="section-title">📝 Pembahasan Soal yang Telah Dikerjakan:</div>
+        <div id="reviewListContainer" class="review-list">
+          <!-- Daftar butir soal + jawaban + pembahasan -->
+        </div>
+      </div>
+
+      <!-- Tombol Aksi -->
+      <div class="action-buttons-group">
+        <button id="btnUlangiTes" class="btn btn-secondary">🔄 Ulangi Tes</button>
+        <button id="btnCetakHasil" class="btn btn-primary">🖨️ Cetak Hasil</button>
+      </div>
+
+      <small class="disclaimer-text">Hasil ini hanya gambaran awal untuk latihan, bukan penilaian resmi.</small>
+    </section>
+
+  </div>
+
+  <script>
+    /* ==========================================================================
+       BAGIAN 1: KONFIGURASI DAN BANK SOAL (TEPAT 10 SOAL)
+       - Jumlah soal tes disimpan sebagai konstanta JUMLAH_SOAL_TES = 6.
+       - Tepat 10 butir soal: 5 level kesulitan, masing-masing 2 butir soal.
+       - Format pecahan menggunakan HTML bertingkat agar mudah dipahami siswa SD.
+       - Pengecoh (distraktor) mencerminkan miskonsepsi umum matematika SD.
+       ========================================================================== */
+
+    // Konstanta aturan berhenti tes (mudah diubah sesuai kebutuhan pengembang/guru)
+    const JUMLAH_SOAL_TES = 6;
+
+    // Bank Soal Pilihan Ganda (Tepat 10 Soal)
+    const bankSoal = [
+      // ------------------------------------------------------------------------
+      // LEVEL 1 (Sangat Mudah): Mengenal pecahan dan desimal sederhana
+      // ------------------------------------------------------------------------
+      {
+        id: 1,
+        topik: "Pecahan",
+        level: 1,
+        soal: "Sebuah pizza dipotong menjadi 4 bagian sama besar. Siti memakan 1 bagian pizza tersebut. Bagian pizza yang dimakan Siti dapat ditulis dalam bentuk pecahan yaitu ...",
+        opsi: [
+          '<span class="frac"><span class="frac-top">1</span><span class="frac-bottom">4</span></span>',
+          '<span class="frac"><span class="frac-top">1</span><span class="frac-bottom">3</span></span>',
+          '<span class="frac"><span class="frac-top">3</span><span class="frac-bottom">4</span></span>',
+          '<span class="frac"><span class="frac-top">4</span><span class="frac-bottom">1</span></span>'
+        ],
+        jawaban_benar: 0, // Kunci: A
+        pembahasan: "Siti memakan 1 bagian (pembilang) dari total keseluruhan 4 bagian pizza yang sama besar (penyebut). Maka bentuk pecahannya adalah 1/4."
+      },
+      {
+        id: 2,
+        topik: "Desimal",
+        level: 1,
+        soal: 'Pecahan satu persepuluh (<span class="frac"><span class="frac-top">1</span><span class="frac-bottom">10</span></span>) jika ditulis ke dalam bentuk bilangan desimal adalah ...',
+        opsi: [
+          "0,01",
+          "0,1",
+          "1,0",
+          "0,001"
+        ],
+        jawaban_benar: 1, // Kunci: B
+        pembahasan: "Pecahan persepuluhan (1/10) berarti terdapat satu angka di belakang tanda koma, yaitu 0,1."
+      },
+
+      // ------------------------------------------------------------------------
+      // LEVEL 2 (Mudah): Pecahan senilai, membandingkan pecahan/desimal
+      // ------------------------------------------------------------------------
+      {
+        id: 3,
+        topik: "Pecahan",
+        level: 2,
+        soal: 'Pecahan di bawah ini yang senilai dengan <span class="frac"><span class="frac-top">2</span><span class="frac-bottom">3</span></span> adalah ...',
+        opsi: [
+          '<span class="frac"><span class="frac-top">3</span><span class="frac-bottom">4</span></span>',
+          '<span class="frac"><span class="frac-top">4</span><span class="frac-bottom">9</span></span>',
+          '<span class="frac"><span class="frac-top">4</span><span class="frac-bottom">6</span></span>',
+          '<span class="frac"><span class="frac-top">5</span><span class="frac-bottom">6</span></span>'
+        ],
+        jawaban_benar: 2, // Kunci: C
+        pembahasan: "Pecahan senilai diperoleh dengan mengalikan pembilang dan penyebut dengan angka yang sama. (2 × 2) / (3 × 2) = 4/6."
+      },
+      {
+        id: 4,
+        topik: "Desimal",
+        level: 2,
+        soal: "Perhatikan dua bilangan desimal berikut: <strong>0,7</strong> dan <strong>0,45</strong>. Tanda perbandingan yang paling tepat adalah ...",
+        opsi: [
+          "0,7 < 0,45",
+          "0,7 = 0,45",
+          "0,7 ≤ 0,45",
+          "0,7 > 0,45"
+        ],
+        jawaban_benar: 3, // Kunci: D
+        pembahasan: "Samakan banyak angka di belakang koma: 0,7 nilainya sama dengan 0,70. Karena 0,70 lebih besar dari 0,45, maka perbandingan yang benar adalah 0,7 > 0,45."
+      },
+
+      // ------------------------------------------------------------------------
+      // LEVEL 3 (Sedang): Penjumlahan/pengurangan pecahan, nilai tempat desimal
+      // ------------------------------------------------------------------------
+      {
+        id: 5,
+        topik: "Pecahan",
+        level: 3,
+        soal: 'Hasil dari penjumlahan pecahan <span class="frac"><span class="frac-top">1</span><span class="frac-bottom">2</span></span> + <span class="frac"><span class="frac-top">1</span><span class="frac-bottom">3</span></span> adalah ...',
+        opsi: [
+          '<span class="frac"><span class="frac-top">2</span><span class="frac-bottom">5</span></span>',
+          '<span class="frac"><span class="frac-top">5</span><span class="frac-bottom">6</span></span>',
+          '<span class="frac"><span class="frac-top">2</span><span class="frac-bottom">6</span></span>',
+          '<span class="frac"><span class="frac-top">1</span><span class="frac-bottom">6</span></span>'
+        ],
+        jawaban_benar: 1, // Kunci: B
+        pembahasan: "Samakan penyebut menggunakan KPK dari 2 dan 3, yaitu 6. 1/2 diubah menjadi 3/6, dan 1/3 diubah menjadi 2/6. Maka 3/6 + 2/6 = 5/6 (peringatan: jangan langsung menjumlahkan pembilang dan penyebut menjadi 2/5)."
+      },
+      {
+        id: 6,
+        topik: "Desimal",
+        level: 3,
+        soal: "Pada bilangan desimal <strong>13,85</strong>, angka <strong>8</strong> menempati nilai tempat ...",
+        opsi: [
+          "Satuan",
+          "Puluhan",
+          "Persepuluhan",
+          "Perseratusan"
+        ],
+        jawaban_benar: 2, // Kunci: C
+        pembahasan: "Pada bilangan 13,85: angka 1 adalah puluhan, angka 3 adalah satuan, angka 8 di posisi pertama setelah koma adalah persepuluhan, dan angka 5 di posisi kedua setelah koma adalah perseratusan."
+      },
+
+      // ------------------------------------------------------------------------
+      // LEVEL 4 (Sulit): Perkalian pecahan, penjumlahan/pengurangan desimal
+      // ------------------------------------------------------------------------
+      {
+        id: 7,
+        topik: "Pecahan",
+        level: 4,
+        soal: 'Hasil perkalian pecahan dari <span class="frac"><span class="frac-top">3</span><span class="frac-bottom">4</span></span> × <span class="frac"><span class="frac-top">2</span><span class="frac-bottom">5</span></span> dalam bentuk paling sederhana adalah ...',
+        opsi: [
+          '<span class="frac"><span class="frac-top">3</span><span class="frac-bottom">10</span></span>',
+          '<span class="frac"><span class="frac-top">5</span><span class="frac-bottom">9</span></span>',
+          '<span class="frac"><span class="frac-top">6</span><span class="frac-bottom">9</span></span>',
+          '<span class="frac"><span class="frac-top">15</span><span class="frac-bottom">8</span></span>'
+        ],
+        jawaban_benar: 0, // Kunci: A
+        pembahasan: "Kalikan pembilang dengan pembilang, dan penyebut dengan penyebut: (3 × 2) / (4 × 5) = 6/20. Sederhanakan pecahan 6/20 dengan membagi 2 pada pembilang dan penyebut, hasilnya adalah 3/10."
+      },
+      {
+        id: 8,
+        topik: "Desimal",
+        level: 4,
+        soal: "Hasil dari operasi pengurangan desimal <strong>4,2 − 1,75</strong> adalah ...",
+        opsi: [
+          "3,55",
+          "2,55",
+          "2,45",
+          "3,45"
+        ],
+        jawaban_benar: 2, // Kunci: C
+        pembahasan: "Sejajarkan tanda koma secara bersusun dan tambahkan angka nol pada 4,2 sehingga menjadi 4,20. Hitung: 4,20 − 1,75 = 2,45."
+      },
+
+      // ------------------------------------------------------------------------
+      // LEVEL 5 (Sangat Sulit): Konversi pecahan-desimal-persen dan soal cerita
+      // ------------------------------------------------------------------------
+      {
+        id: 9,
+        topik: "Pecahan",
+        level: 5,
+        soal: 'Pak Budi memiliki sebidang tanah. Sebanyak <span class="frac"><span class="frac-top">2</span><span class="frac-bottom">5</span></span> bagian ditanami jagung dan <strong>0,35</strong> bagian ditanami cabai. Jika sisanya dibuat kolam ikan, berapa bagian tanah yang dibuat kolam ikan dalam bentuk pecahan biasa paling sederhana?',
+        opsi: [
+          '<span class="frac"><span class="frac-top">1</span><span class="frac-bottom">2</span></span>',
+          '<span class="frac"><span class="frac-top">3</span><span class="frac-bottom">10</span></span>',
+          '<span class="frac"><span class="frac-top">1</span><span class="frac-bottom">5</span></span>',
+          '<span class="frac"><span class="frac-top">1</span><span class="frac-bottom">4</span></span>'
+        ],
+        jawaban_benar: 3, // Kunci: D
+        pembahasan: "Ubah 2/5 ke bentuk desimal: 2/5 = 0,40. Total tanah untuk jagung dan cabai = 0,40 + 0,35 = 0,75 bagian. Sisa untuk kolam ikan = 1 − 0,75 = 0,25 bagian. Bentuk pecahan biasa dari 0,25 adalah 25/100 yang disederhanakan menjadi 1/4."
+      },
+      {
+        id: 10,
+        topik: "Desimal",
+        level: 5,
+        soal: 'Urutan bilangan berikut dari yang nilainya <strong>TERKECIL</strong> ke paling besar adalah: <strong>0,6 ; 45% ; <span class="frac"><span class="frac-top">1</span><span class="frac-bottom">2</span></span> ; 0,25</strong>',
+        opsi: [
+          '0,25 ; 45% ; <span class="frac"><span class="frac-top">1</span><span class="frac-bottom">2</span></span> ; 0,6',
+          '45% ; 0,6 ; 0,25 ; <span class="frac"><span class="frac-top">1</span><span class="frac-bottom">2</span></span>',
+          '0,6 ; <span class="frac"><span class="frac-top">1</span><span class="frac-bottom">2</span></span> ; 45% ; 0,25',
+          '0,25 ; <span class="frac"><span class="frac-top">1</span><span class="frac-bottom">2</span></span> ; 45% ; 0,6'
+        ],
+        jawaban_benar: 0, // Kunci: A
+        pembahasan: "Ubah semua bilangan ke format desimal: 0,25 = 0,25 ; 45% = 0,45 ; 1/2 = 0,50 ; 0,6 = 0,60. Maka urutan dari yang terkecil adalah: 0,25 ; 45% ; 1/2 ; 0,6."
+      }
+    ];
+
+    /* ==========================================================================
+       BAGIAN 2: LOGIKA DAN ATURAN SISTEM ADAPTIF (CAT ENGINE)
+       - Soal pertama selalu dimulai dari level 3 (acak dari 2 soal level 3).
+       - Jika Benar: naik 1 level (maksimal level 5).
+       - Jika Salah: turun 1 level (minimal level 1).
+       - Pemilihan soal berikutnya: cari soal belum terpakai pada level target.
+         Jika habis, cari dari level terdekat (cek 1 level di bawah dulu, lalu di atas).
+       - Aturan berhenti: tes berakhir jika telah mencapai JUMLAH_SOAL_TES.
+       ========================================================================== */
+
+    /**
+     * Memilih soal pertama tes pada level 3 secara acak.
+     * @returns {Object} Butir soal terpilih
+     */
+    function pilihSoalPertama() {
+      const soalLevel3 = bankSoal.filter(soal => soal.level === 3);
+      const indeksAcak = Math.floor(Math.random() * soalLevel3.length);
+      return soalLevel3[indeksAcak];
+    }
+
+    /**
+     * Menghitung target tingkat kesulitan berikutnya berdasarkan jawaban siswa.
+     * @param {number} levelSaatIni - Tingkat kesulitan soal saat ini (1-5)
+     * @param {boolean} isBenar - Status jawaban siswa (true/false)
+     * @returns {number} Tingkat kesulitan target berikutnya (1-5)
+     */
+    function hitungLevelBerikutnya(levelSaatIni, isBenar) {
+      if (isBenar) {
+        // Jika jawaban BENAR: naik 1 level (maksimal level 5)
+        return Math.min(5, levelSaatIni + 1);
+      } else {
+        // Jika jawaban SALAH: turun 1 level (minimal level 1)
+        return Math.max(1, levelSaatIni - 1);
+      }
+    }
+
+    /**
+     * FUNGSI PEMILIHAN SOAL BERIKUTNYA (ADAPTIVE ITEM SELECTION)
+     * Mencari soal yang belum pernah muncul pada level target.
+     * Jika persediaan soal di level target telah habis digunakan,
+     * sistem mencari soal dari level terdekat (cek satu level di bawah dulu, lalu di atas).
+     *
+     * @param {number} levelTarget - Level kesulitan yang ditargetkan (1-5)
+     * @param {Array<number>} idTerpakai - Kumpulan ID soal yang sudah pernah dikerjakan
+     * @returns {Object|null} Butir soal berikutnya yang belum digunakan
+     */
+    function pilihSoalBerikutnya(levelTarget, idTerpakai) {
+      // 1. Cek ketersediaan butir soal pada level target
+      const soalTersedia = bankSoal.filter(
+        soal => soal.level === levelTarget && !idTerpakai.includes(soal.id)
+      );
+
+      if (soalTersedia.length > 0) {
+        // Jika ada, pilih satu secara acak
+        const randomIndex = Math.floor(Math.random() * soalTersedia.length);
+        return soalTersedia[randomIndex];
+      }
+
+      // 2. Jika habis di level target, cari dari level terdekat
+      // Cek jarak delta dari 1 sampai 4
+      for (let delta = 1; delta <= 4; delta++) {
+        // Prioritas a: Cek 1 level di bawah (levelTarget - delta)
+        const levelBawah = levelTarget - delta;
+        if (levelBawah >= 1) {
+          const soalBawah = bankSoal.filter(
+            soal => soal.level === levelBawah && !idTerpakai.includes(soal.id)
+          );
+          if (soalBawah.length > 0) {
+            const randomIndex = Math.floor(Math.random() * soalBawah.length);
+            return soalBawah[randomIndex];
+          }
+        }
+
+        // Prioritas b: Cek 1 level di atas (levelTarget + delta)
+        const levelAtas = levelTarget + delta;
+        if (levelAtas <= 5) {
+          const soalAtas = bankSoal.filter(
+            soal => soal.level === levelAtas && !idTerpakai.includes(soal.id)
+          );
+          if (soalAtas.length > 0) {
+            const randomIndex = Math.floor(Math.random() * soalAtas.length);
+            return soalAtas[randomIndex];
+          }
+        }
+      }
+
+      // Pengaman jika seluruh butir soal telah dipakai
+      return null;
+    }
+
+    /**
+     * ATURAN BERHENTI (STOPPING RULE)
+     * Memeriksa apakah tes harus berhenti berdasarkan jumlah soal yang telah dikerjakan.
+     * @param {number} jumlahSoalSelesai - Jumlah butir yang telah dijawab
+     * @returns {boolean} true jika tes selesai, false jika berlanjut
+     */
+    function cekApakahTesSelesai(jumlahSoalSelesai) {
+      return jumlahSoalSelesai >= JUMLAH_SOAL_TES;
+    }
+
+    /* ==========================================================================
+       BAGIAN 3: MANAJEMEN STATE DAN KALKULASI HASIL EVALUASI
+       ========================================================================== */
+
+    // Status / State aktif selama tes berlangsung
+    let stateTes = {
+      namaSiswa: "",
+      soalSekarang: null,
+      opsiTerpilih: null, // indeks 0-3
+      nomorUrut: 1,
+      riwayatJawaban: [] // array menyimpan: { soal, jawabanSiswa, isBenar, levelSoal }
+    };
+
+    /**
+     * Menghitung metrik akhir evaluasi tes
+     * @param {Array} riwayat - Kumpulan riwayat jawaban siswa
+     * @returns {Object} Data kalkulasi statistik hasil tes
+     */
+    function hitungHasilEvaluasi(riwayat) {
+      const jumlahDikerjakan = riwayat.length;
+      const jumlahBenar = riwayat.filter(r => r.isBenar).length;
+      const jumlahSalah = jumlahDikerjakan - jumlahBenar;
+
+      // Skor = (jumlah benar / jumlah soal) x 100, dibulatkan
+      const skor = Math.round((jumlahBenar / jumlahDikerjakan) * 100);
+
+      // Kategori predikat berdasarkan skor
+      let kategori = "";
+      let kelasKategori = "";
+      if (skor >= 80) {
+        kategori = "Sangat Baik";
+        kelasKategori = "category-sangat-baik";
+      } else if (skor >= 60) {
+        kategori = "Baik";
+        kelasKategori = "category-baik";
+      } else if (skor >= 40) {
+        kategori = "Cukup";
+        kelasKategori = "category-cukup";
+      } else {
+        kategori = "Perlu Bimbingan";
+        kelasKategori = "category-perlu-bimbingan";
+      }
+
+      // Level tertinggi yang berhasil dijawab benar
+      const jawabanBenar = riwayat.filter(r => r.isBenar);
+      let levelTertinggiBenar = "-";
+      if (jawabanBenar.length > 0) {
+        const maxLevel = Math.max(...jawabanBenar.map(r => r.levelSoal));
+        levelTertinggiBenar = "Level " + maxLevel;
+      }
+
+      // Rekapitulasi performa per topik yang muncul
+      const rekapTopik = {};
+      riwayat.forEach(item => {
+        const topik = item.soal.topik;
+        if (!rekapTopik[topik]) {
+          rekapTopik[topik] = { total: 0, benar: 0, salah: 0 };
+        }
+        rekapTopik[topik].total++;
+        if (item.isBenar) {
+          rekapTopik[topik].benar++;
+        } else {
+          rekapTopik[topik].salah++;
+        }
+      });
+
+      // Saran topik yang perlu diulang
+      const topikPerluDiulang = [];
+      for (const [topik, data] of Object.entries(rekapTopik)) {
+        if (data.salah > 0) {
+          topikPerluDiulang.push(topik);
+        }
+      }
+
+      return {
+        jumlahDikerjakan,
+        jumlahBenar,
+        jumlahSalah,
+        skor,
+        kategori,
+        kelasKategori,
+        levelTertinggiBenar,
+        rekapTopik,
+        topikPerluDiulang
+      };
+    }
+
+    /* ==========================================================================
+       BAGIAN 4: KODE TAMPILAN (UI RENDERING & EVENT LISTENERS)
+       - Pengendali perpindahan layar (Start -> Quiz -> Result).
+       - Rendering butir soal dan penanganan klik opsi jawaban.
+       - Langsung lanjut ke soal berikutnya tanpa menampilkan benar/salah saat tes.
+       - Rendering halaman hasil lengkap dan fungsi cetak.
+       ========================================================================== */
+
+    // Elemen DOM Layar
+    const screenStart = document.getElementById("screenStart");
+    const screenQuiz = document.getElementById("screenQuiz");
+    const screenResult = document.getElementById("screenResult");
+
+    // Elemen DOM Input & Tombol
+    const inputNamaSiswa = document.getElementById("inputNamaSiswa");
+    const namaErrorMsg = document.getElementById("namaErrorMsg");
+    const btnMulaiTes = document.getElementById("btnMulaiTes");
+    const btnJawabSoal = document.getElementById("btnJawabSoal");
+    const btnUlangiTes = document.getElementById("btnUlangiTes");
+    const btnCetakHasil = document.getElementById("btnCetakHasil");
+
+    // Elemen DOM Kuis
+    const quizNumberLabel = document.getElementById("quizNumberLabel");
+    const quizLevelBadge = document.getElementById("quizLevelBadge");
+    const quizTopicBadge = document.getElementById("quizTopicBadge");
+    const progressBarFill = document.getElementById("progressBarFill");
+    const questionText = document.getElementById("questionText");
+    const optionsContainer = document.getElementById("optionsContainer");
+
+    // Elemen DOM Hasil
+    const resultGreeting = document.getElementById("resultGreeting");
+    const resultScore = document.getElementById("resultScore");
+    const resultCategoryBadge = document.getElementById("resultCategoryBadge");
+    const metricTotalSoal = document.getElementById("metricTotalSoal");
+    const metricBenar = document.getElementById("metricBenar");
+    const metricSalah = document.getElementById("metricSalah");
+    const metricHighestLevel = document.getElementById("metricHighestLevel");
+    const pathDisplay = document.getElementById("pathDisplay");
+    const topicsGrid = document.getElementById("topicsGrid");
+    const studyAdviceBox = document.getElementById("studyAdviceBox");
+    const reviewListContainer = document.getElementById("reviewListContainer");
+
+    // Label huruf untuk 4 opsi pilihan ganda
+    const labelHuruf = ["A", "B", "C", "D"];
+
+    // Keterangan teks tingkat kesulitan
+    const namaTingkat = {
+      1: "Level 1: Sangat Mudah",
+      2: "Level 2: Mudah",
+      3: "Level 3: Sedang",
+      4: "Level 4: Sulit",
+      5: "Level 5: Sangat Sulit"
+    };
+
+    /**
+     * Menampilkan layar tertentu dan menyembunyikan layar lainnya
+     * @param {string} namaLayar - 'start', 'quiz', atau 'result'
+     */
+    function tampilkanLayar(namaLayar) {
+      screenStart.style.display = namaLayar === "start" ? "block" : "none";
+      screenQuiz.style.display = namaLayar === "quiz" ? "block" : "none";
+      screenResult.style.display = namaLayar === "result" ? "block" : "none";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    /**
+     * Memulai sesi tes baru
+     */
+    function mulaiTes() {
+      const nama = inputNamaSiswa.value.trim();
+      if (!nama) {
+        namaErrorMsg.style.display = "block";
+        inputNamaSiswa.focus();
+        return;
+      }
+      namaErrorMsg.style.display = "none";
+
+      // Inisialisasi state awal tes
+      stateTes = {
+        namaSiswa: nama,
+        soalSekarang: pilihSoalPertama(), // Mulai dari level 3
+        opsiTerpilih: null,
+        nomorUrut: 1,
+        riwayatJawaban: []
+      };
+
+      tampilkanLayar("quiz");
+      renderSoalSaatIni();
+    }
+
+    /**
+     * Merender butir soal yang sedang aktif ke layar
+     */
+    function renderSoalSaatIni() {
+      const soal = stateTes.soalSekarang;
+      stateTes.opsiTerpilih = null;
+      btnJawabSoal.disabled = true; // Dinonaktifkan sebelum ada opsi yang dipilih
+
+      // Perbarui label nomor dan progres
+      quizNumberLabel.textContent = `Soal ${stateTes.nomorUrut} dari ${JUMLAH_SOAL_TES}`;
+      quizLevelBadge.textContent = namaTingkat[soal.level] || `Level ${soal.level}`;
+      quizTopicBadge.textContent = `Topik: ${soal.topik}`;
+
+      const persenProgres = ((stateTes.nomorUrut - 1) / JUMLAH_SOAL_TES) * 100;
+      progressBarFill.style.width = `${persenProgres}%`;
+
+      // Render teks soal
+      questionText.innerHTML = soal.soal;
+
+      // Render 4 tombol opsi
+      optionsContainer.innerHTML = "";
+      soal.opsi.forEach((opsiHtml, index) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "option-btn";
+        btn.setAttribute("data-index", index);
+        btn.innerHTML = `
+          <div class="option-letter">${labelHuruf[index]}</div>
+          <div class="option-content">${opsiHtml}</div>
+        `;
+
+        btn.addEventListener("click", () => {
+          pilihOpsi(index);
+        });
+
+        optionsContainer.appendChild(btn);
+      });
+    }
+
+    /**
+     * Mengatur status pemilihan opsi jawaban
+     * @param {number} index - Indeks opsi terpilih (0-3)
+     */
+    function pilihOpsi(index) {
+      stateTes.opsiTerpilih = index;
+
+      // Perbarui tampilan visual tombol opsi
+      const semuaTombol = optionsContainer.querySelectorAll(".option-btn");
+      semuaTombol.forEach((btn, idx) => {
+        if (idx === index) {
+          btn.classList.add("selected");
+        } else {
+          btn.classList.remove("selected");
+        }
+      });
+
+      // Tombol jawab aktif setelah opsi dipilih
+      btnJawabSoal.disabled = false;
+    }
+
+    /**
+     * Memproses jawaban siswa dan bertransisi ke butir berikutnya
+     * (Langsung lanjut tanpa menampilkan umpan balik benar/salah di tengah tes)
+     */
+    function prosesJawaban() {
+      if (stateTes.opsiTerpilih === null) return;
+
+      const soal = stateTes.soalSekarang;
+      const isBenar = (stateTes.opsiTerpilih === soal.jawaban_benar);
+
+      // Simpan respon ke dalam riwayat tes
+      stateTes.riwayatJawaban.push({
+        soal: soal,
+        jawabanSiswa: stateTes.opsiTerpilih,
+        isBenar: isBenar,
+        levelSoal: soal.level
+      });
+
+      // Periksa aturan berhenti tes
+      if (cekApakahTesSelesai(stateTes.riwayatJawaban.length)) {
+        // Update progres 100% dan tampilkan hasil
+        progressBarFill.style.width = "100%";
+        setTimeout(() => {
+          tampilkanHasilTes();
+        }, 200);
+        return;
+      }
+
+      // Hitung level kesulitan target berikutnya
+      const targetLevel = hitungLevelBerikutnya(soal.level, isBenar);
+
+      // Kumpulkan ID butir soal yang sudah pernah dikerjakan
+      const idTerpakai = stateTes.riwayatJawaban.map(r => r.soal.id);
+
+      // Pilih butir soal berikutnya secara adaptif
+      const soalBerikutnya = pilihSoalBerikutnya(targetLevel, idTerpakai);
+
+      // Perbarui state dan tampilkan butir soal selanjutnya
+      stateTes.nomorUrut++;
+      stateTes.soalSekarang = soalBerikutnya;
+      renderSoalSaatIni();
+    }
+
+    /**
+     * Merender seluruh ringkasan dan analisis pada Halaman Hasil
+     */
+    function tampilkanHasilTes() {
+      const hasil = hitungHasilEvaluasi(stateTes.riwayatJawaban);
+
+      // Header hasil
+      resultGreeting.textContent = `Selamat, ${stateTes.namaSiswa}! 🎉`;
+      resultScore.textContent = hasil.skor;
+      resultCategoryBadge.textContent = hasil.kategori;
+      resultCategoryBadge.className = `result-category-badge ${hasil.kelasKategori}`;
+
+      // Kartu metrik
+      metricTotalSoal.textContent = `${hasil.jumlahDikerjakan} Soal`;
+      metricBenar.textContent = `${hasil.jumlahBenar} Soal`;
+      metricSalah.textContent = `${hasil.jumlahSalah} Soal`;
+      metricHighestLevel.textContent = hasil.levelTertinggiBenar;
+
+      // Jalur lintasan adaptif (contoh: 3 -> 4 -> 3 -> 4 -> 5 -> 4)
+      pathDisplay.innerHTML = "";
+      stateTes.riwayatJawaban.forEach((item, idx) => {
+        const node = document.createElement("div");
+        node.className = "path-node";
+        node.textContent = `L${item.levelSoal}`;
+        node.title = `Soal ${idx + 1}: Level ${item.levelSoal} (${item.isBenar ? "Benar" : "Salah"})`;
+        pathDisplay.appendChild(node);
+
+        if (idx < stateTes.riwayatJawaban.length - 1) {
+          const arrow = document.createElement("span");
+          arrow.className = "path-arrow";
+          arrow.textContent = "➔";
+          pathDisplay.appendChild(arrow);
+        }
+      });
+
+      // Ringkasan per topik
+      topicsGrid.innerHTML = "";
+      for (const [topik, data] of Object.entries(hasil.rekapTopik)) {
+        const topicCard = document.createElement("div");
+        topicCard.className = "topic-card";
+        topicCard.innerHTML = `
+          <h4>📖 Topik ${topik}</h4>
+          <div class="topic-stat">Muncul: <strong>${data.total} soal</strong></div>
+          <div class="topic-stat" style="color: var(--success);">Benar: <strong>${data.benar} soal</strong></div>
+          <div class="topic-stat" style="color: var(--danger);">Salah: <strong>${data.salah} soal</strong></div>
+        `;
+        topicsGrid.appendChild(topicCard);
+      }
+
+      // Rekomendasi belajar
+      if (hasil.topikPerluDiulang.length > 0) {
+        studyAdviceBox.innerHTML = `
+          <strong>💡 Saran Pembelajaran:</strong><br />
+          Kamu disarankan untuk memperdalam kembali latihan pada materi <strong>${hasil.topikPerluDiulang.join(" dan ")}</strong>.
+          Pelajari kembali cara menyamakan penyebut atau mensejajarkan tanda koma agar semakin mahir ya!
+        `;
+      } else {
+        studyAdviceBox.innerHTML = `
+          <strong>🌟 Luar Biasa!</strong><br />
+          Kamu berhasil menjawab semua topik dengan sangat tepat. Pemahamanmu tentang konsep Pecahan dan Desimal sudah sangat hebat!
+        `;
+      }
+
+      // Daftar review soal + jawaban + pembahasan
+      reviewListContainer.innerHTML = "";
+      stateTes.riwayatJawaban.forEach((item, idx) => {
+        const reviewItem = document.createElement("div");
+        reviewItem.className = `review-item ${item.isBenar ? "is-correct" : "is-wrong"}`;
+
+        const hurufSiswa = labelHuruf[item.jawabanSiswa];
+        const opsiSiswa = item.soal.opsi[item.jawabanSiswa];
+        const hurufKunci = labelHuruf[item.soal.jawaban_benar];
+        const opsiKunci = item.soal.opsi[item.soal.jawaban_benar];
+
+        reviewItem.innerHTML = `
+          <div class="review-item-header">
+            <div>
+              <strong>Soal ${idx + 1}</strong> &bull;
+              <span class="badge badge-level">Level ${item.levelSoal}</span>
+              <span class="badge badge-topic">${item.soal.topik}</span>
+            </div>
+            <span class="review-status-badge ${item.isBenar ? "status-correct" : "status-wrong"}">
+              ${item.isBenar ? "✓ Jawaban Benar" : "✗ Jawaban Kurang Tepat"}
+            </span>
+          </div>
+
+          <div class="review-question-text">${item.soal.soal}</div>
+
+          <div class="review-answers-box">
+            <div>Jawabanmu: <strong>(${hurufSiswa})</strong> ${opsiSiswa}</div>
+            ${
+              !item.isBenar
+                ? `<div style="margin-top: 4px; color: #065f46;">Kunci Jawaban Benar: <strong>(${hurufKunci})</strong> ${opsiKunci}</div>`
+                : ""
+            }
+          </div>
+
+          <div class="review-explanation">
+            <strong>Pembahasan:</strong> ${item.soal.pembahasan}
+          </div>
+        `;
+
+        reviewListContainer.appendChild(reviewItem);
+      });
+
+      tampilkanLayar("result");
+    }
+
+    /* ==========================================================================
+       PENDAFTARAN EVENT LISTENER PENGGUNA
+       ========================================================================== */
+    btnMulaiTes.addEventListener("click", mulaiTes);
+
+    inputNamaSiswa.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        mulaiTes();
+      }
+    });
+
+    btnJawabSoal.addEventListener("click", prosesJawaban);
+
+    btnUlangiTes.addEventListener("click", () => {
+      inputNamaSiswa.value = "";
+      tampilkanLayar("start");
+    });
+
+    btnCetakHasil.addEventListener("click", () => {
+      window.print();
+    });
+  </script>
+</body>
+</html>
